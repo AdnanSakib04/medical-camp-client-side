@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { GiQuillInk } from "react-icons/gi";
+import { FaBriefcaseMedical } from "react-icons/fa6";
+
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
@@ -16,15 +17,15 @@ const NavBar = () => {
     }
     const navLinks = <>
         <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "font-bold  text-gray-950 lg:text-gray-600 p-2 rounded-lg" : ""} to="/">Home</NavLink></li>
+            isPending ? "pending" : isActive ? "font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/">Home</NavLink></li>
         <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-gray-950 lg:text-gray-600 p-2 rounded-lg" : ""} to="/addblog">Add Blog</NavLink></li>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/contact-us">Contact Us</NavLink></li>
         <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-gray-950 lg:text-gray-600 p-2 rounded-lg" : ""} to="/allblogs">All Blogs</NavLink></li>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/allblogs">All Blogs</NavLink></li>
         <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-gray-950 lg:text-gray-600 p-2 rounded-lg" : ""} to="/featuredblogs">Featured Blogs</NavLink></li>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/featuredblogs">Featured Blogs</NavLink></li>
         <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-gray-950 lg:text-gray-600 p-2 rounded-lg" : ""} to="/wishlist">Wishlist</NavLink></li>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/wishlist">Wishlist</NavLink></li>
 
     </>
     return (
@@ -42,9 +43,9 @@ const NavBar = () => {
                     <div className="flex items-center gap-2">
                         <div>
 
-                            <GiQuillInk className=" text-4xl  text-gray-600">
+                            <FaBriefcaseMedical className=" text-2xl  text-blue-600">
 
-                            </GiQuillInk>
+                            </FaBriefcaseMedical>
                         </div>
                         <div className="text-center font-medium text-xl ">
                             <h1>Care Sync</h1>
@@ -82,10 +83,10 @@ const NavBar = () => {
                             :
                             <>
                                 <Link to="/register">
-                                    <button className="btn bg-gray-600 text-white w-[90px]">Register</button>
+                                    <button className="btn bg-blue-600 text-white w-[90px]">Register</button>
                                 </Link>
                                 <Link to="/login">
-                                    <button className="btn bg-gray-600 text-white w-[90px]">Login</button>
+                                    <button className="btn bg-blue-600 text-white w-[90px]">Login</button>
                                 </Link>
                             </>
                     }
