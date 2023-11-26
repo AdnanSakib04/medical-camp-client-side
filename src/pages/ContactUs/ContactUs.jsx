@@ -57,7 +57,7 @@ const ContactUs = () => {
                             <textarea placeholder="Your Message" name="message" className="textarea textarea-bordered resize-y mt-3" required />
                         </div>
                         <div className="form-control mt-3 flex items-center">
-                            <button type="submit" className="w-1/2 btn bg-blue-500 border-none font-bold text-xl text-gray-950">Submit</button>
+                            <button type="submit" className="w-1/2 btn bg-blue-600 border-none font-bold text-xl text-white">Submit</button>
                         </div>
                     </form>
 
