@@ -1,5 +1,5 @@
-import { FaPhone, FaLocationDot } from "react-icons/fa6";
-import { IoMail } from "react-icons/io5";
+import { motion } from "framer-motion"
+
 import { ToastContainer, toast } from "react-toastify";
 const Volunteer = () => {
     const handleNewsletter = e => {
@@ -29,7 +29,7 @@ const Volunteer = () => {
                             <textarea placeholder="Write About Yourself and why you want to be a volunteer" name="message" className="textarea textarea-bordered resize-y mt-3" required />
                         </div>
                         <div className="form-control mt-3 flex items-center">
-                            <button type="submit" className="w-1/2 btn bg-blue-600 border-none font-bold text-xl text-white">Submit</button>
+                            <motion.button whileHover={{scale: 1.25}} type="submit" className="w-1/2 btn bg-blue-600 border-none font-bold text-xl text-white">Submit</motion.button>
                         </div>
                     </form>
 

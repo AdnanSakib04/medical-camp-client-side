@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-import Footer from "../shared/Footer/Footer";
 import AboutUs from "./AboutUs";
 import Volunteer from "./Volunteer";
 
@@ -12,7 +11,7 @@ const Home = () => {
 
             <AboutUs></AboutUs>
             <Volunteer></Volunteer>
-            <Footer></Footer>
+            
         </div>
     );
 };
