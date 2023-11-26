@@ -1,7 +1,5 @@
 import { FaPhone, FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
-
-
 import { ToastContainer, toast } from "react-toastify";
 
 
