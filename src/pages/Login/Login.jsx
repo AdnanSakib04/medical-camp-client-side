@@ -46,32 +46,32 @@ const Login = () => {
         <div className=" max-w-7xl mx-auto mb-40 ">
         <div className="  p-4 mt-8 rounded-3xl ">
 
-            <form onSubmit={handleLogin} className="md:w-1/2 mx-auto card-body bg-gray-600  rounded-3xl">
-                <h1 className="text-4xl font-bold lg:text-5xl mt-8 text-center text-white">Login</h1>
+            <form onSubmit={handleLogin} className="md:w-1/2 mx-auto card-body bg-blue-300  rounded-3xl">
+                <h1 className="text-4xl font-bold lg:text-5xl mt-8 text-center ">Login</h1>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-medium text-[18px] text-white">Email</span>
+                        <span className="label-text font-medium text-[18px] ">Email</span>
                     </label>
                     <input type="email" placeholder="email" name="email" className="input input-bordered  " required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-medium text-[18px] text-white">Password</span>
+                        <span className="label-text font-medium text-[18px] ">Password</span>
                     </label>
                     <input type="password" name="password" placeholder="password" className="input input-bordered  " required />
 
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn bg-gray-400 border-none font-bold text-xl text-white">Login</button>
+                    <button className="btn bg-blue-600 border-none font-bold text-xl text-white">Login</button>
                 </div>
 
-                <p onClick={handleGoogleSignIn} className="mt-2 shadow-lg btn bg-transparent hover:  font-semibold hover:text-black py-2 px-4 border-2 border-gray-400 hover:border-transparent rounded-xl max-w-max mx-auto text-white">
+                <p onClick={handleGoogleSignIn} className="mt-2 shadow-lg btn bg-transparent hover:  font-semibold hover:text-black py-2 px-4 border-2 border-blue-600 hover:border-transparent rounded-xl max-w-max mx-auto ">
                     <span className="text-3xl"><FcGoogle></FcGoogle></span> Continue with Google
                 </p>
 
                 
 
-                <p className=" text-center mt-6 text-xl font-medium text-white">Want to create an account? <Link className=" text-green-500 font-bold" to={'/register'}>Register</Link></p>
+                <p className=" text-center mt-6 text-xl font-medium ">Want to create an account? <Link className=" text-blue-500 font-bold" to={'/register'}>Register</Link></p>
             </form>
             
             
