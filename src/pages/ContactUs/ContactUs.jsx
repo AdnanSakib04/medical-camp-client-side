@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { FaPhone, FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +15,9 @@ const ContactUs = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Care Sync | Contact Us</title>
+            </Helmet>
             <div className="px-8 mt-10">
                 <div className=" max-w-7xl mx-auto px-5 bg-blue-300 rounded-lg">
                     <div className="grid grid-cols-1 md:grid-cols-3 py-5 gap-5">

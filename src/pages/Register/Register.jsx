@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 
@@ -67,8 +68,11 @@ const Register = () => {
             })
     }
     return (
-        <div className='max-w-7xl mx-auto mb-40'>
-
+        <div>
+             <Helmet>
+                <title>Care Sync | Register</title>
+            </Helmet>
+            <div className='max-w-7xl mx-auto mb-40'>
             <div className="  p-4 mt-8 rounded-3xl ">
                
                 <form onSubmit={handleRegister} className="md:w-1/2 mx-auto card-body bg-blue-300 rounded-3xl">
@@ -109,6 +113,7 @@ const Register = () => {
                 
             </div>
             <ToastContainer></ToastContainer>
+        </div>
         </div>
     );
 };
