@@ -5,7 +5,7 @@ const Volunteer = () => {
     const handleNewsletter = e => {
         e.preventDefault();
 
-        toast.success('Thank you for contacting us.');
+        toast.success('Thank you for participating.');
 
     }
     return (
