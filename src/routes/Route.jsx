@@ -6,6 +6,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import AddCamp from "../pages/AddCamp";
+import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +34,11 @@ const router = createBrowserRouter([
         },
         {
             path: "/add-a-camp",
-            element: <AddCamp></AddCamp>
+            element: <PrivateRoute><AddCamp></AddCamp></PrivateRoute>
+        },
+        {
+          path: "/available-camps",
+          element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>
         }
        
     
