@@ -8,6 +8,8 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import AddCamp from "../pages/AddCamp";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+import HealthProfessionalHome from "../pages/DashBoard/HealthProfessional/HealthProfessionalHome";
 
 const router = createBrowserRouter([
     {
@@ -41,11 +43,20 @@ const router = createBrowserRouter([
           element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>,
           loader: () => fetch('http://localhost:5000/available-camps')
         }
-       
-    
-  
       ],
     },
+    {
+      path: 'dashboard',
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children: [
+        {
+          path: 'healthProfessionalHome',
+          element: <HealthProfessionalHome></HealthProfessionalHome>
+        },
+        
+
+      ]
+    }
   ]);
   
   export default router;

@@ -28,8 +28,8 @@ const NavBar = () => {
        {user &&  <li><NavLink className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/available-camps">Available Camps</NavLink></li>}
 
-        <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/wishlist">Wishlist</NavLink></li>
+        {user && <li><NavLink className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard">Dashboard</NavLink></li>}
 
     </>
     return (

@@ -144,8 +144,7 @@ const AddCamp = () => {
                 Attendance</span>
             </label>
             <input
-              placeholder="Healthcare Professionals in
-              Attendance"
+              placeholder="Healthcare Professionals in Attendance"
               {...register('healthcareProfessionals', { required: true })}
               required
               className="input input-bordered w-full"
