@@ -25,9 +25,10 @@ const HealthProfessionalHome = () => {
     const phone = form.phone.value;
     const specialty = form.specialty.value;
     const certifications = form.certifications.value;
+    const address = form.address.value;
     const email = form.email.value;
 
-    const updatedProfile = { name, phone, specialty, certifications, email };
+    const updatedProfile = { name, phone, specialty, certifications, email, address };
 
     console.log(updatedProfile);
 
@@ -72,9 +73,11 @@ const HealthProfessionalHome = () => {
     <div className=" max-w-lg mx-auto ">
       <div className="space-y-2 border-blue-600 border-2 p-3 rounded-3xl">
         <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Name:</span> {userData?.name}</h1>
+        <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Email:</span> {userData?.email}</h1>
         <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Medical Specialty: </span>{userData?.specialty}</h1>
         <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Certifications:</span> {userData?.certifications}</h1>
         <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Phone:</span> {userData?.phone}</h1>
+        <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Address:</span> {userData?.address}</h1>
       </div>
 
       <div className='max-w-7xl mx-auto mb-40'>
@@ -115,6 +118,12 @@ const HealthProfessionalHome = () => {
                     <span className="label-text font-medium text-[18px]">Phone</span>
                   </label>
                   <input type="text" defaultValue={userData?.phone} placeholder="Phone" name="phone" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-medium text-[18px]">Address</span>
+                  </label>
+                  <input type="text" defaultValue={userData?.address} placeholder="address" name="address" className="input input-bordered" required />
                 </div>
 
                 <div className="form-control mt-6">

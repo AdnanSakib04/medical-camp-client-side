@@ -1,12 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaBriefcaseMedical } from "react-icons/fa6";
 
 import { AuthContext } from "../../../providers/AuthProvider";
+import { getUserRole } from "../../../layout/userRole";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
+
+    const [userRole, setUserRole] = useState(null);
+
+    useEffect(() => {
+      // Fetch user role when the component mounts
+      if (user) {
+        getUserRole(user.email)
+          .then((role) => setUserRole(role))
+          .catch((error) => console.error('Error fetching user role:', error));
+      }
+    }, [user]);
 
     // console.log("---------",user?.displayName);
 
@@ -28,8 +40,10 @@ const NavBar = () => {
        {user &&  <li><NavLink className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/available-camps">Available Camps</NavLink></li>}
 
-        {user && <li><NavLink className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard">Dashboard</NavLink></li>}
+        {userRole==="participant" && <li><NavLink className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard/participant-profile">Dashboard</NavLink></li>}
+        {userRole==="healthcareProfessional" && <li><NavLink className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard/professional-profile">Dashboard</NavLink></li>}
 
     </>
     return (

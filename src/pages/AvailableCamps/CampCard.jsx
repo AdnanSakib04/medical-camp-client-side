@@ -29,7 +29,7 @@ const CampCard = ({ singleCamp }) => {
             <h2 className=" text-justify mb-2"> {description}</h2>
 
             <div className="flex justify-evenly mt-auto">
-                <Link to={`/blogDetails/${_id}`}><button className="btn bg-blue-300 text-black font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
+                <Link to={`/camp-details/${_id}`}><button className="btn bg-blue-300 text-black font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
                
 
                 {/* check to see if user is logged in or not */}

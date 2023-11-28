@@ -1,7 +1,7 @@
 import  { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { getUserRole } from "./userRole";
-import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaBook, FaEnvelope, FaHome, FaList, FaUsers, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -52,6 +52,16 @@ const Dashboard = () => {
                         </>
                             
                     }
+                    {
+                        userRole==="participant" && 
+                        <>
+                        <li>
+                                <NavLink to="/dashboard/participant-profile">
+                                    <FaHome></FaHome>
+                                    Participant Profile</NavLink>
+                            </li>
+                        </>
+                    }
                     {/* shared nav links */}
                     <div className="divider"></div>
                     <li>
@@ -60,12 +70,7 @@ const Dashboard = () => {
                             Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/order/salad">
-                            <FaSearch></FaSearch>
-                            Menu</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/order/contact">
+                        <NavLink to="/contact-us">
                             <FaEnvelope></FaEnvelope>
                             Contact</NavLink>
                     </li>

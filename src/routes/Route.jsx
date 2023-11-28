@@ -10,6 +10,8 @@ import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
 import HealthProfessionalHome from "../pages/DashBoard/HealthProfessional/HealthProfessionalHome";
+import CampDetails from "../pages/CampDetails";
+import ParticipantProfile from "../pages/DashBoard/HealthProfessional/ParticipantProfile";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +44,12 @@ const router = createBrowserRouter([
           path: "/available-camps",
           element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>,
           loader: () => fetch('http://localhost:5000/available-camps')
+        },
+        {
+          path: "/camp-details/:campId",
+          element: <PrivateRoute><CampDetails></CampDetails></PrivateRoute>,
+          loader: () => fetch(`http://localhost:5000/available-camps`)
+
         }
       ],
     },
@@ -52,6 +60,10 @@ const router = createBrowserRouter([
         {
           path: 'professional-profile',
           element: <HealthProfessionalHome></HealthProfessionalHome>
+        },
+        {
+          path: 'participant-profile',
+          element: <ParticipantProfile></ParticipantProfile>
         },
         
 

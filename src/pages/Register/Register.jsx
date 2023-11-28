@@ -52,6 +52,21 @@ const Register = () => {
                 specialty: "",
                 certifications: "",
                 phone: "",
+                address: ""
+            }
+    
+            axiosPublic.post('/healthcareProfessional', healthcareProfessionalInfo)
+            .then(res => console.log(res)
+            )
+        }
+        if(role === "participant"){
+            const healthcareProfessionalInfo = {
+                name: name,
+                email: email,
+                preferences: "",
+                interests: "",
+                phone: "",
+                address: "",
             }
     
             axiosPublic.post('/healthcareProfessional', healthcareProfessionalInfo)
