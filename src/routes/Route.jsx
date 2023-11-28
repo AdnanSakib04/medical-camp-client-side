@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import AddCamp from "../pages/AddCamp";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         {
             path: "/contact-us",
             element: <ContactUs></ContactUs>
+        },
+        {
+            path: "/add-a-camp",
+            element: <AddCamp></AddCamp>
         }
        
     

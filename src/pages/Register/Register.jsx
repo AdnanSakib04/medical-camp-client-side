@@ -1,15 +1,20 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 
 const Register = () => {
     const { createUser, handleProfileUpdate, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
+
 
 
     const handleRegister = e => {
@@ -48,8 +53,28 @@ const Register = () => {
                 console.log(result.user)
                 handleProfileUpdate(name, photo)
                     .then(() => {
-                        toast.success('Account created successfully');
-                        Navigate('/')
+                        // create user entry in the database
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                            photoUrl: photo,
+                            role: role
+                        }
+                        axiosPublic.post('/users', userInfo)
+                        .then(res => {
+                            if (res.data.insertedId) {
+                                console.log('user added to the database')
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                            }
+                        })
+
                     })
             })
             .catch(error => {
