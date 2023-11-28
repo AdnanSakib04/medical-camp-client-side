@@ -1,4 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,7 +7,7 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { signInUser } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -33,16 +32,7 @@ const Login = () => {
             })
     }
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user)
-                toast.success('You have successfully logged in');
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+   
     return (
         <div>
             <Helmet>
@@ -70,9 +60,7 @@ const Login = () => {
                             <button className="btn bg-blue-600 border-none font-bold text-xl text-white">Login</button>
                         </div>
 
-                        <p onClick={handleGoogleSignIn} className="mt-2 shadow-lg btn bg-transparent hover:  font-semibold hover:text-black py-2 px-4 border-2 border-blue-600 hover:border-transparent rounded-xl max-w-max mx-auto ">
-                            <span className="text-3xl"><FcGoogle></FcGoogle></span> Continue with Google
-                        </p>
+                       
 
 
 

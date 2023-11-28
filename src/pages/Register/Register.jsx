@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,7 +10,7 @@ import Swal from "sweetalert2";
 
 
 const Register = () => {
-    const { createUser, handleProfileUpdate, signInWithGoogle } = useContext(AuthContext);
+    const { createUser, handleProfileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
@@ -46,8 +45,19 @@ const Register = () => {
         //     return;
         // }
 
-
-
+        if(role === "healthcareProfessional"){
+            const healthcareProfessionalInfo = {
+                name: name,
+                email: email,
+                specialty: "",
+                certifications: "",
+                phone: "",
+            }
+    
+            axiosPublic.post('/healthcareProfessional', healthcareProfessionalInfo)
+            .then(res => console.log(res)
+            )
+        }
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
@@ -83,16 +93,7 @@ const Register = () => {
             })
     }
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user)
-                toast.success('You have successfully logged in');
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+   
     return (
         <div>
             <Helmet>
@@ -142,9 +143,7 @@ const Register = () => {
                         <div className="form-control mt-6">
                             <button className="btn bg-blue-600  border-none font-bold text-xl text-white">Register</button>
                         </div>
-                        <p onClick={handleGoogleSignIn} className="mt-2 shadow-lg btn bg-transparent hover:  font-semibold hover:text-black py-2 px-4 border-2 border-blue-600 hover:border-transparent rounded-xl max-w-max mx-auto ">
-                            <span className="text-3xl"><FcGoogle></FcGoogle></span> Continue with Google
-                        </p>
+                       
                         <p className="text-center mt-6 text-xl font-medium ">Already have an account? <Link className=" text-blue-600 font-bold" to={'/login'}>Login</Link></p>
                     </form>
 

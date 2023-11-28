@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
-          path: 'healthProfessionalHome',
+          path: 'professional-profile',
           element: <HealthProfessionalHome></HealthProfessionalHome>
         },
         

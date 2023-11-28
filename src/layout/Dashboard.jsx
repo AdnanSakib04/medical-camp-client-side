@@ -25,7 +25,7 @@ const Dashboard = () => {
                     {userRole==='healthcareProfessional' &&
                          <>
                             <li>
-                                <NavLink to="/dashboard/healthProfessionalHome">
+                                <NavLink to="/dashboard/professional-profile">
                                     <FaHome></FaHome>
                                     Health Professional Home</NavLink>
                             </li>
