@@ -38,7 +38,8 @@ const router = createBrowserRouter([
         },
         {
           path: "/available-camps",
-          element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>
+          element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>,
+          loader: () => fetch('http://localhost:5000/available-camps')
         }
        
     

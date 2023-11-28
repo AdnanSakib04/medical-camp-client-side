@@ -32,8 +32,9 @@ const AddCamp = () => {
           description: data.description,
           fees: data.fees,
           dateTime: data.dateTime,
-          specializedServices: data.specializedServices
-          
+          specializedServices: data.specializedServices,
+          healthcareProfessionals: data.healthcareProfessionals
+
         };
         console.log(campData);
 
@@ -133,6 +134,19 @@ const AddCamp = () => {
             <input
               placeholder="Specialized Services Provided"
               {...register('specializedServices', { required: true })}
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-medium text-[18px]">Healthcare Professionals in
+                Attendance</span>
+            </label>
+            <input
+              placeholder="Healthcare Professionals in
+              Attendance"
+              {...register('healthcareProfessionals', { required: true })}
               required
               className="input input-bordered w-full"
             />
