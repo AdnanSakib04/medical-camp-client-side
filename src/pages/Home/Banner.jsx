@@ -6,7 +6,7 @@ const Banner = () => {
         <div className="max-w-7xl mx-auto">
             <Carousel showStatus={false} showThumbs={true}>
                 <div className="relative">
-                    <img src={"https://i.ibb.co/RvgSZwp/camp1.png"} alt="Camp 1" />
+                    <img  src={"https://i.ibb.co/RvgSZwp/camp1.png"} alt="Camp 1" />
                     <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-blue-600 font-medium bg-white p-2 rounded-3xl'>
                         Received recognition for outstanding healthcare outcomes
                     </p>
