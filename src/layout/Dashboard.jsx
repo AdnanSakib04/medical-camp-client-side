@@ -4,6 +4,7 @@ import { getUserRole } from "./userRole";
 import { FaEnvelope, FaHome} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { IoAdd } from "react-icons/io5";
+import { MdOutlineManageAccounts } from "react-icons/md";
 
 
 const Dashboard = () => {
@@ -69,7 +70,7 @@ const Dashboard = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manage-camps">
-                                    <IoAdd></IoAdd>
+                                    <MdOutlineManageAccounts></MdOutlineManageAccounts>
                                     Manage Camps</NavLink>
                             </li>
                         </>

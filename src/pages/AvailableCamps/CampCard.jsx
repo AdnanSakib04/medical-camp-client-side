@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { BiDetail } from "react-icons/bi";
-import { BsBookmarks } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
 import { motion } from "framer-motion"
+import { FaAnglesRight } from "react-icons/fa6";
 
 
 import Swal from "sweetalert2";
@@ -38,9 +38,9 @@ const CampCard = ({ singleCamp }) => {
                 {/* check to see if user is logged in or not */}
                 {
                     user? 
-                    <button  className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><BsBookmarks></BsBookmarks>Wishlist</button>
+                    <button  className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button>
                     :
-                    <Link to={`/login`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><BsBookmarks></BsBookmarks>Wishlist</button></Link>
+                    <Link to={`/login`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button></Link>
                    }
             </div>
         </div>
