@@ -97,9 +97,9 @@ const ManageCamps = () => {
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="flex gap-1">
-            <Link to={`/updateBlog/`}>
-              <button className="btn bg-green-500 border-none text-white"> Update</button>
-            </Link>
+          
+             <Link to={`updateCamp/${row.original._id}`}> <button className="btn bg-green-500 border-none text-white"> Update</button></Link>
+            
             <button
               className="btn bg-red-500 border-none text-white"
               onClick={() => handleDelete(row.original._id)}

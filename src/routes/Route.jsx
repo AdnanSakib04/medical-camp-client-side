@@ -14,6 +14,7 @@ import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfil
 import OrganizerProfile from "../pages/DashBoard/Organizer/OrganizerProfile";
 import AddCamp from "../pages/DashBoard/Organizer/AddCamp";
 import ManageCamps from "../pages/DashBoard/Organizer/ManageCamps";
+import UpdateCamp from "../pages/DashBoard/Organizer/UpdateCamp";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
         {
           path: "manage-camps",
           element: <PrivateRoute><ManageCamps></ManageCamps></PrivateRoute>
+      },
+        {
+          path: "manage-camps/updateCamp/:campId",
+          element: <PrivateRoute><UpdateCamp></UpdateCamp></PrivateRoute>,
+          loader: () => fetch(`http://localhost:5000/available-camps`)
       },
         
 

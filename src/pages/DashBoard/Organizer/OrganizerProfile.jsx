@@ -19,6 +19,7 @@ const OrganizerProfile = () => {
     const handleUpdateProfile = event => {
         event.preventDefault();
 
+        
         const form = event.target;
         const name = form.name.value;
         const phone = form.phone.value;
