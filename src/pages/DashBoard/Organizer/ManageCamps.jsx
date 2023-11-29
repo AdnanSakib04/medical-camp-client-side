@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useTable } from "react-table";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageCamps = () => {
   const { user } = useContext(AuthContext);
@@ -17,6 +18,48 @@ const ManageCamps = () => {
         console.error('Error fetching user data:', error);
       });
   }, [user.email]);
+
+  const handleDelete = useCallback(
+    _id => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove it!'
+      }).then(result => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/delete-camp/${_id}`, {
+            method: 'DELETE'
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire(
+                  'Removed!',
+                  'Camp has been removed.',
+                  'success'
+                );
+                const remainingCamps = campData.filter(camp => camp._id !== _id);
+                setCampData(remainingCamps);
+              }
+            })
+            .catch(error => {
+              console.error('Error deleting camp:', error);
+              Swal.fire(
+                'Error!',
+                'An error occurred while removing the camp.',
+                'error'
+              );
+            });
+        }
+      });
+    },
+    [campData]
+  );
 
   // Create columns and data for React Table
   const columns = React.useMemo(
@@ -52,15 +95,22 @@ const ManageCamps = () => {
       {
         Header: "Actions",
         accessor: "actions",
-        Cell: () => (
-          <div className=" flex gap-1">
-             <Link to={`/updateBlog/`}> <button className="btn bg-green-500 border-none text-white "> Update</button></Link>
-             <Link to={`/updateBlog/`}> <button className="btn bg-red-500 border-none  text-white"> Delete</button></Link>
+        Cell: ({ row }) => (
+          <div className="flex gap-1">
+            <Link to={`/updateBlog/`}>
+              <button className="btn bg-green-500 border-none text-white"> Update</button>
+            </Link>
+            <button
+              className="btn bg-red-500 border-none text-white"
+              onClick={() => handleDelete(row.original._id)}
+            >
+              Delete
+            </button>
           </div>
         ),
-    }
+      },
     ],
-    []
+    [handleDelete]
   );
 
   const data = React.useMemo(() => campData || [], [campData]);
