@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { BiDetail } from "react-icons/bi";
-import { BsBookmarks } from "react-icons/bs";
+import { motion } from "framer-motion"
+
 const PopularCampCard = ({ singleCamp }) => {
     const { name, photo, audience, description, location, _id, fees, specializedServices, dateTime, healthcareProfessionals } = singleCamp;
     console.log(_id);
 
     return (
-        <div className="card w-96 bg-blue-300 shadow-xl">
+        <motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration: 2}} 
+        className="card w-96 bg-blue-300 shadow-xl">
         <figure><img className="h-[213px] w-full" src={photo} alt="" /></figure>
         <div className="card-body">
             <h2 className="text-[22px] font-bold text-black"> {name}</h2>
@@ -25,7 +27,7 @@ const PopularCampCard = ({ singleCamp }) => {
               
             </div>
         </div>
-    </div>
+    </motion.div>
     );
 };
 

@@ -3,6 +3,7 @@ import AboutUs from "./AboutUs";
 import Volunteer from "./Volunteer";
 import Banner from "./Banner";
 import PopularCamps from "./PopularCamps";
+import UpcomingCamps from "./UpcomingCamps";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <PopularCamps></PopularCamps>
             <AboutUs></AboutUs>
             <Volunteer></Volunteer>
+            <UpcomingCamps></UpcomingCamps>
             
         </div>
     );

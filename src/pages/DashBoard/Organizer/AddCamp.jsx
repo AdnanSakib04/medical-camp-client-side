@@ -10,7 +10,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddCamp = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset,  formState: { errors } } = useForm();
   const axiosPublic = useAxiosPublic();
   // const axiosSecure = useAxiosSecure();
 
@@ -165,16 +165,19 @@ const AddCamp = () => {
             />
           </div>
 
-          <div className="form-control ">
-            <label className="label">
-              <span className="label-text font-medium text-[18px]">Picture</span>
-            </label>
-            <input
-              {...register('image', { required: 'Image is required' })}
-              type="file"
-              className="file-input w-full max-w-xs"
-            />
-          </div>
+          <div className="form-control">
+        <label className="label">
+          <span className="label-text font-medium text-[18px]">Picture</span>
+        </label>
+        <input
+          {...register('image', { required: true })}
+          type="file"
+          className="file-input w-full max-w-xs"
+        />
+        {errors.image && (
+          <p className="text-red-700 text-lg font-medium mt-1">Please select an image.</p>
+        )}
+      </div>
 
           <div className="form-control mt-6">
             <input

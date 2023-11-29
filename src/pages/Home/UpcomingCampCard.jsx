@@ -1,21 +1,10 @@
 import { Link } from "react-router-dom";
 import { BiDetail } from "react-icons/bi";
-import { BsBookmarks } from "react-icons/bs";
-import { AuthContext } from "../../providers/AuthProvider";
 import { motion } from "framer-motion"
 
-
-import Swal from "sweetalert2";
-import { useContext } from "react";
-const CampCard = ({ singleCamp }) => {
+const UpcomingCampCard = ({ singleCamp }) => {
     const { name, photo, audience, description, location, _id, fees, specializedServices, dateTime, healthcareProfessionals } = singleCamp;
     console.log(_id);
-
-    const { user } = useContext(AuthContext);
-
-
-   
-    
 
     return (
         <motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration: 2}} 
@@ -35,17 +24,12 @@ const CampCard = ({ singleCamp }) => {
                 <Link to={`/camp-details/${_id}`}><button className="btn bg-blue-600 text-white font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
                
 
-                {/* check to see if user is logged in or not */}
-                {
-                    user? 
-                    <button  className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><BsBookmarks></BsBookmarks>Wishlist</button>
-                    :
-                    <Link to={`/login`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><BsBookmarks></BsBookmarks>Wishlist</button></Link>
-                   }
+              
             </div>
         </div>
     </motion.div>
     );
 };
 
-export default CampCard;
+
+export default UpcomingCampCard;
