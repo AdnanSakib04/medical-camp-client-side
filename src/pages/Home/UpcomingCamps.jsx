@@ -5,7 +5,7 @@ const UpcomingCamps = () => {
   const [campData, setCampData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/available-camps`)
+    fetch(`http://localhost:5000/upcoming-camps`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);

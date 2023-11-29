@@ -40,9 +40,15 @@ const CampDetails = () => {
         const fees = form.fees.value;
         const email = user.email;
         const campID = campId;
+        const campName = camp.name;
+        const dateTime = camp.dateTime;
+        const location =  camp.location;
+        const paymentStatus = "Unpaid";
+        const confirmationStatus = "Pending";
 
 
-        const registrationInfo = { name, phone, gender, bloodGroup, address, fees, email, campID };
+
+        const registrationInfo = { name, phone, gender, bloodGroup, address, fees, email, campID, campName, dateTime, location, paymentStatus,  confirmationStatus};
 
         console.log(registrationInfo);
 

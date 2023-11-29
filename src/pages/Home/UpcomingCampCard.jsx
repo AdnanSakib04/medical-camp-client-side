@@ -21,7 +21,7 @@ const UpcomingCampCard = ({ singleCamp }) => {
             <h2 className=" text-justify mb-2"> {description}</h2>
 
             <div className="flex justify-evenly mt-auto">
-                <Link to={`/camp-details/${_id}`}><button className="btn bg-blue-600 text-white font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
+                <Link to={`/upcoming-camp-details/${_id}`}><button className="btn bg-blue-600 text-white font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
                
 
               
