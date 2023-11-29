@@ -43,12 +43,13 @@ const CampDetails = () => {
         const campName = camp.name;
         const dateTime = camp.dateTime;
         const location =  camp.location;
+        const organizerEmail = camp.organizerEmail;
         const paymentStatus = "Unpaid";
         const confirmationStatus = "Pending";
 
 
 
-        const registrationInfo = { name, phone, gender, bloodGroup, address, fees, email, campID, campName, dateTime, location, paymentStatus,  confirmationStatus};
+        const registrationInfo = { name, phone, gender, bloodGroup, address, fees, email, campID, campName, dateTime, location, paymentStatus,  confirmationStatus, organizerEmail};
 
         console.log(registrationInfo);
 

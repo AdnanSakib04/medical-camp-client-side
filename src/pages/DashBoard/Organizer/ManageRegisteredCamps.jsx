@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
 
-const RegisteredCamps = () => {
+const ManageRegisteredCamps = () => {
   const { user } = useContext(AuthContext);
   const [campData, setCampData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/registered-camps/${user.email}`)
+    fetch(`http://localhost:5000/manage-registered-camps/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);
@@ -61,8 +61,6 @@ const RegisteredCamps = () => {
     [campData]
   );
 
-
-
   // Create columns and data for React Table
   const columns = React.useMemo(
     () => [
@@ -95,31 +93,15 @@ const RegisteredCamps = () => {
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="flex gap-1">
-            <Link to={`updateCamp/${row.original._id}`}>
-              <button className="btn bg-green-500 border-none text-white">Update</button>
-            </Link>
+          
+             <Link to={`updateCamp/${row.original._id}`}> <button className="btn bg-green-500 border-none text-white"> Update</button></Link>
+            
             <button
               className="btn bg-red-500 border-none text-white"
               onClick={() => handleCancel(row.original._id)}
             >
               Cancel
             </button>
-            {row.original.paymentStatus === 'Unpaid' && (
-              <Link to={`payment/${row.original._id}`}><button
-              className="btn bg-blue-500 border-none text-white"
-              
-            >
-              Pay
-            </button></Link>
-            )}
-              {row.original.paymentStatus === 'Paid' && (
-              <button
-              className="btn bg-blue-500 border-none text-white" disabled
-              
-            >
-              Paid
-            </button>
-            )}
           </div>
         ),
       },
@@ -173,4 +155,5 @@ const RegisteredCamps = () => {
 
 
 
-export default RegisteredCamps;
+
+export default ManageRegisteredCamps;

@@ -18,6 +18,9 @@ import UpdateCamp from "../pages/DashBoard/Organizer/UpdateCamp";
 import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps";
 import AddUpcomingCamp from "../pages/DashBoard/Organizer/AddUpcomingCamp";
 import UpcomingCampDetails from "../pages/Home/UpcomingCampDetails";
+import ManageRegisteredCamps from "../pages/DashBoard/Organizer/ManageRegisteredCamps";
+import Payment from "../pages/DashBoard/Participant/Payment";
+import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +88,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><ManageCamps></ManageCamps></PrivateRoute>
       },
       {
+        path: "manage-registered-camps",
+        element: <PrivateRoute><ManageRegisteredCamps></ManageRegisteredCamps></PrivateRoute>
+      },
+      {
         path: "manage-camps/updateCamp/:campId",
         element: <PrivateRoute><UpdateCamp></UpdateCamp></PrivateRoute>,
         loader: () => fetch(`http://localhost:5000/available-camps`)
@@ -97,6 +104,15 @@ const router = createBrowserRouter([
         path: "add-upcoming-camp",
         element: <PrivateRoute><AddUpcomingCamp></AddUpcomingCamp></PrivateRoute>
       },
+      {
+        path: "registered-camps/payment/:id",
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+        loader: () => fetch(`http://localhost:5000/registered-camps`)
+      },
+      {
+        path: "payment-history",
+        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+      }
 
 
     ]

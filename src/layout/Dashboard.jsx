@@ -54,7 +54,12 @@ const Dashboard = () => {
                                 <li>
                                     <NavLink to="/dashboard/registered-camps">
                                         <FaCashRegister></FaCashRegister>
-                                        Participant Profile</NavLink>
+                                        Registered Camps</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/payment-history">
+                                        <FaCashRegister></FaCashRegister>
+                                        Payment History</NavLink>
                                 </li>
                             </>
                         }
@@ -78,6 +83,11 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/manage-camps">
                                         <MdOutlineManageAccounts></MdOutlineManageAccounts>
                                         Manage Camps</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/manage-registered-camps">
+                                        <MdOutlineManageAccounts></MdOutlineManageAccounts>
+                                        Manage Registered Camps</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/add-upcoming-camp">
