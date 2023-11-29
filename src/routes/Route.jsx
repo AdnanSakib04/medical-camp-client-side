@@ -13,6 +13,7 @@ import CampDetails from "../pages/CampDetails";
 import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfile";
 import OrganizerProfile from "../pages/DashBoard/Organizer/OrganizerProfile";
 import AddCamp from "../pages/DashBoard/Organizer/AddCamp";
+import ManageCamps from "../pages/DashBoard/Organizer/ManageCamps";
 
 const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         {
           path: "add-a-camp",
           element: <PrivateRoute><AddCamp></AddCamp></PrivateRoute>
+      },
+        {
+          path: "manage-camps",
+          element: <PrivateRoute><ManageCamps></ManageCamps></PrivateRoute>
       },
         
 

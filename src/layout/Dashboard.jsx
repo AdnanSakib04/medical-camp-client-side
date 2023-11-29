@@ -1,82 +1,80 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { getUserRole } from "./userRole";
-import { FaBook, FaEnvelope, FaHome, FaList, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaEnvelope, FaHome} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import { IoAdd } from "react-icons/io5";
+
 
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
-  const [userRole, setUserRole] = useState(null);
+    const { user } = useContext(AuthContext);
+    const [userRole, setUserRole] = useState(null);
 
-  useEffect(() => {
-    // Fetch user role when the component mounts
-    if (user) {
-      getUserRole(user.email)
-        .then((role) => setUserRole(role))
-        .catch((error) => console.error('Error fetching user role:', error));
-    }
-  }, [user]);
+    useEffect(() => {
+        // Fetch user role when the component mounts
+        if (user) {
+            getUserRole(user.email)
+                .then((role) => setUserRole(role))
+                .catch((error) => console.error('Error fetching user role:', error));
+        }
+    }, [user]);
 
-  return (
-    <div className="flex">
+    return (
+        <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-blue-300">
                 <ul className="menu p-4">
-                    {userRole==='healthcareProfessional' &&
-                         <>
+                    {userRole === 'healthcareProfessional' &&
+                        <>
                             <li>
                                 <NavLink to="/dashboard/professional-profile">
                                     <FaHome></FaHome>
                                     Health Professional Home</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/dashboard/addItems">
-                                    <FaUtensils></FaUtensils>
-                                    Add Items</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/manageItems">
-                                    <FaList></FaList>
-                                    Manage Items</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/bookings">
-                                    <FaBook></FaBook>
-                                    Manage Bookings</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/users">
-                                    <FaUsers></FaUsers>
-                                    All Users</NavLink>
-                            </li>
-                        </>
+                           
                             
+                        </>
+
                     }
+
+
+
                     {
-                        userRole==="participant" && 
+                        userRole === "participant" &&
                         <>
-                        <li>
+                            <li>
                                 <NavLink to="/dashboard/participant-profile">
                                     <FaHome></FaHome>
                                     Participant Profile</NavLink>
                             </li>
                         </>
                     }
+
+
+
                     {
-                        userRole==="organizer" && 
+                        userRole === "organizer" &&
                         <>
-                        <li>
+                            <li>
                                 <NavLink to="/dashboard/organizer-profile">
                                     <FaHome></FaHome>
                                     Organizer Profile</NavLink>
                             </li>
-                        <li>
+                            <li>
                                 <NavLink to="/dashboard/add-a-camp">
-                                    <FaHome></FaHome>
-                                   Add a Camp</NavLink>
+                                    <IoAdd></IoAdd>
+                                    Add a Camp</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/manage-camps">
+                                    <IoAdd></IoAdd>
+                                    Manage Camps</NavLink>
                             </li>
                         </>
                     }
+
+
+
                     {/* shared nav links */}
                     <div className="divider"></div>
                     <li>
@@ -96,7 +94,7 @@ const Dashboard = () => {
                 <Outlet></Outlet>
             </div>
         </div>
-  );
+    );
 };
 
 export default Dashboard;

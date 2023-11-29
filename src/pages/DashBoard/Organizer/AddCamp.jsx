@@ -33,12 +33,13 @@ const AddCamp = () => {
           fees: data.fees,
           dateTime: data.dateTime,
           specializedServices: data.specializedServices,
-          healthcareProfessionals: data.healthcareProfessionals
+          healthcareProfessionals: data.healthcareProfessionals,
+          organizerEmail: user.email,
 
         };
         console.log(campData);
 
-        const campRes = await axiosPublic.post('/add-camp-endpoint', campData);
+        const campRes = await axiosPublic.post('/add-a-camp', campData);
 
         if (campRes.data.insertedId) {
           // Show success popup
