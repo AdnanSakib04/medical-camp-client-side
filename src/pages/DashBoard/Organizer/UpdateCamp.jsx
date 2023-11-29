@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useLoaderData, useParams } from "react-router-dom";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const UpdateCamp = () => {
@@ -17,13 +16,14 @@ const UpdateCamp = () => {
     const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       name: camp?.name ,
-      audience: camp?.audience || 'male', // Assuming a default value, change as needed
+      audience: camp?.audience || 'male', 
       location: camp?.location || '',
       fees: camp?.fees || '',
       description: camp?.description || '',
       specializedServices: camp?.specializedServices || '',
       healthcareProfessionals: camp?.healthcareProfessionals || '',
-      dateTime: camp?.dateTime || '', // Assuming this is in the correct format, change as needed
+      dateTime: camp?.dateTime || '', 
+      photo: camp?.photo || '',
     },
   });
 
@@ -32,6 +32,7 @@ const UpdateCamp = () => {
       
         const campData = {
           name: data.name,
+          photo: data.photo,
           
           audience: data.audience,
           location: data.location,
@@ -170,6 +171,18 @@ const UpdateCamp = () => {
             <input
               type="datetime-local"
               {...register('dateTime', { required: true })}
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-medium text-[18px]">Photo</span>
+            </label>
+            <input
+              placeholder="photo"
+              {...register('photo', { required: true })}
               required
               className="input input-bordered w-full"
             />
