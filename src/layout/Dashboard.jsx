@@ -70,6 +70,11 @@ const Dashboard = () => {
                                     <FaHome></FaHome>
                                     Organizer Profile</NavLink>
                             </li>
+                        <li>
+                                <NavLink to="/dashboard/add-a-camp">
+                                    <FaHome></FaHome>
+                                   Add a Camp</NavLink>
+                            </li>
                         </>
                     }
                     {/* shared nav links */}

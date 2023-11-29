@@ -1,8 +1,8 @@
-import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
-import useAxiosPublic from '../hooks/useAxiosPublic';
 import { useContext } from 'react';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { AuthContext } from '../../../providers/AuthProvider';
 // import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
@@ -88,6 +88,7 @@ const AddCamp = () => {
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="children">Children</option>
+              <option value="everyone">Everyone</option>
             </select>
           </div>
 

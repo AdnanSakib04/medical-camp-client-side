@@ -5,14 +5,14 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ContactUs from "../pages/ContactUs/ContactUs";
-import AddCamp from "../pages/AddCamp";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
 import HealthProfessionalHome from "../pages/DashBoard/HealthProfessional/HealthProfessionalHome";
 import CampDetails from "../pages/CampDetails";
-import ParticipantProfile from "../pages/DashBoard/HealthProfessional/ParticipantProfile";
-import OrganizerProfile from "../pages/DashBoard/HealthProfessional/OrganizerProfile";
+import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfile";
+import OrganizerProfile from "../pages/DashBoard/Organizer/OrganizerProfile";
+import AddCamp from "../pages/DashBoard/Organizer/AddCamp";
 
 const router = createBrowserRouter([
     {
@@ -37,10 +37,7 @@ const router = createBrowserRouter([
             path: "/contact-us",
             element: <ContactUs></ContactUs>
         },
-        {
-            path: "/add-a-camp",
-            element: <PrivateRoute><AddCamp></AddCamp></PrivateRoute>
-        },
+       
         {
           path: "/available-camps",
           element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>,
@@ -70,6 +67,10 @@ const router = createBrowserRouter([
           path: 'organizer-profile',
           element: <OrganizerProfile></OrganizerProfile>
         },
+        {
+          path: "add-a-camp",
+          element: <PrivateRoute><AddCamp></AddCamp></PrivateRoute>
+      },
         
 
       ]

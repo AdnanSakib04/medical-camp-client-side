@@ -104,12 +104,7 @@ const OrganizerProfile = () => {
                                     </label>
                                     <input type="text" defaultValue={userData?.preferences} placeholder="preferences" name="preferences" className="input input-bordered" required />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-[18px]">Interests in Medical Area</span>
-                                    </label>
-                                    <input type="text" defaultValue={userData?.interests} placeholder="interests" name="interests" className="input input-bordered" required />
-                                </div>
+                               
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text font-medium text-[18px]">Phone</span>

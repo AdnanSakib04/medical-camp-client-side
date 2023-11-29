@@ -76,16 +76,15 @@ const Register = () => {
         }
 
         if(role === "organizer"){
-            const healthcareProfessionalInfo = {
+            const organizerInfo = {
                 name: name,
                 email: email,
                 preferences: "",
-                interests: "",
                 phone: "",
                 address: "",
             }
     
-            axiosPublic.post('/healthcareProfessional', healthcareProfessionalInfo)
+            axiosPublic.post('/organizer', organizerInfo)
             .then(res => console.log(res)
             )
         }
