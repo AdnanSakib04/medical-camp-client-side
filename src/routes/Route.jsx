@@ -12,6 +12,7 @@ import Dashboard from "../layout/Dashboard";
 import HealthProfessionalHome from "../pages/DashBoard/HealthProfessional/HealthProfessionalHome";
 import CampDetails from "../pages/CampDetails";
 import ParticipantProfile from "../pages/DashBoard/HealthProfessional/ParticipantProfile";
+import OrganizerProfile from "../pages/DashBoard/HealthProfessional/OrganizerProfile";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         {
           path: 'participant-profile',
           element: <ParticipantProfile></ParticipantProfile>
+        },
+        {
+          path: 'organizer-profile',
+          element: <OrganizerProfile></OrganizerProfile>
         },
         
 

@@ -59,7 +59,23 @@ const Register = () => {
             .then(res => console.log(res)
             )
         }
+
         if(role === "participant"){
+            const participantInfo = {
+                name: name,
+                email: email,
+                preferences: "",
+                interests: "",
+                phone: "",
+                address: "",
+            }
+    
+            axiosPublic.post('/participant', participantInfo)
+            .then(res => console.log(res)
+            )
+        }
+
+        if(role === "organizer"){
             const healthcareProfessionalInfo = {
                 name: name,
                 email: email,

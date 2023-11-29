@@ -62,6 +62,16 @@ const Dashboard = () => {
                             </li>
                         </>
                     }
+                    {
+                        userRole==="organizer" && 
+                        <>
+                        <li>
+                                <NavLink to="/dashboard/organizer-profile">
+                                    <FaHome></FaHome>
+                                    Organizer Profile</NavLink>
+                            </li>
+                        </>
+                    }
                     {/* shared nav links */}
                     <div className="divider"></div>
                     <li>

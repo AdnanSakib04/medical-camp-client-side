@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
-const ParticipantProfile = () => {
+const OrganizerProfile = () => {
     const { user } = useContext(AuthContext);
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/get-participant-data?email=${user.email}`)
+        fetch(`http://localhost:5000/get-organizer-data?email=${user.email}`)
             .then(response => response.json())
             .then(data => {
                 setUserData(data);
@@ -23,15 +23,14 @@ const ParticipantProfile = () => {
         const name = form.name.value;
         const phone = form.phone.value;
         const preferences = form.preferences.value;
-        const interests = form.interests.value;
         const address = form.address.value;
         const email = form.email.value;
 
-        const updatedProfile = { name, phone, preferences, interests, email, address };
+        const updatedProfile = { name, phone, preferences, email, address };
 
         console.log(updatedProfile);
 
-        fetch(`http://localhost:5000/update-participant-profile/${email}`, {
+        fetch(`http://localhost:5000/update-organizer-profile/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +73,6 @@ const ParticipantProfile = () => {
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Name:</span> {userData?.name}</h1>
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Email:</span> {userData?.email}</h1>
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Preferences: </span>{userData?.preferences}</h1>
-                <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Interests in Medical Area:</span> {userData?.interests}</h1>
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Phone:</span> {userData?.phone}</h1>
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Address:</span> {userData?.address}</h1>
             </div>
@@ -140,4 +138,4 @@ const ParticipantProfile = () => {
     );
 };
 
-export default ParticipantProfile;
+export default OrganizerProfile;

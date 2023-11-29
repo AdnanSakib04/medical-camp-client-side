@@ -7,7 +7,7 @@ const HealthProfessionalHome = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/get-user-data?email=${user.email}`)
+    fetch(`http://localhost:5000/get-healthcareProfessional-data?email=${user.email}`)
       .then(response => response.json())
       .then(data => {
         setUserData(data);
