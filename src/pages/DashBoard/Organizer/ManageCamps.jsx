@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTable } from "react-table";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const ManageCamps = () => {
   const { user } = useContext(AuthContext);
   const [campData, setCampData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/available-camps?email=${user.email}`)
+    fetch(`http://localhost:5000/available-camps/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);
@@ -48,6 +49,16 @@ const ManageCamps = () => {
         Header: "Comprehensive Description",
         accessor: "description",
       },
+      {
+        Header: "Actions",
+        accessor: "actions",
+        Cell: () => (
+          <div className=" flex gap-1">
+             <Link to={`/updateBlog/`}> <button className="btn bg-green-500 border-none text-white "> Update</button></Link>
+             <Link to={`/updateBlog/`}> <button className="btn bg-red-500 border-none  text-white"> Delete</button></Link>
+          </div>
+        ),
+    }
     ],
     []
   );
