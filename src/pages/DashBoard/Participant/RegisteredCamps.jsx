@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const RegisteredCamps = () => {
   const { user } = useContext(AuthContext);
@@ -32,27 +33,27 @@ const RegisteredCamps = () => {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, cancel it!'
       });
-  
+
       if (confirmation.isConfirmed) {
         try {
           const updateStatus = {
             confirmationStatus: 'Cancelled',
           };
-          
+
           // Update the confirmation status on the payment history
           const res2 = await axiosPublic.patch(`/payment-history-status/${_id}`, updateStatus);
           console.log('Confirmation status updated on payment history:', res2.data.message);
-          
+
           // Update the confirmation status
           const res = await axiosPublic.patch(`/registered-camp-organizer/${_id}`, updateStatus);
           console.log('Confirmation status updated:', res.data.message);
-  
+
           // Assuming campData is a state you use to render your table
           const updatedCamps = campData.map((camp) =>
             camp._id === _id ? { ...camp, confirmationStatus: 'Cancelled' } : camp
           );
           setCampData(updatedCamps);
-  
+
           Swal.fire({
             title: 'Cancelled!',
             text: 'Registration Cancelled.',
@@ -78,7 +79,7 @@ const RegisteredCamps = () => {
     () => [
       {
         Header: "Camp Name",
-        accessor: "campName", 
+        accessor: "campName",
       },
       {
         Header: "Scheduled Date and Time",
@@ -86,61 +87,61 @@ const RegisteredCamps = () => {
       },
       {
         Header: "Venue Location",
-        accessor: "location", 
+        accessor: "location",
       },
       {
         Header: "Camp Fees",
-        accessor: "fees", 
-      },     
+        accessor: "fees",
+      },
       {
         Header: "Payment Status",
-        accessor: "paymentStatus", 
-      },     
+        accessor: "paymentStatus",
+      },
       {
         Header: "Confirmation Status",
-        accessor: "confirmationStatus", 
-      },     
+        accessor: "confirmationStatus",
+      },
       {
         Header: "Actions",
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="flex gap-1">
-            
-            {row.original.paymentStatus === 'Unpaid' && row.original.confirmationStatus != 'Cancelled' &&(
+
+            {row.original.paymentStatus === 'Unpaid' && row.original.confirmationStatus != 'Cancelled' && (
               <button
-              className="btn bg-red-500 border-none text-white"
-              onClick={() => handleCancel(row.original._id)}
-            >
-              Cancel
-            </button>
+                className="btn bg-red-500 border-none text-white"
+                onClick={() => handleCancel(row.original._id)}
+              >
+                Cancel
+              </button>
             )}
             {row.original.paymentStatus === 'Paid' && (
               <button disabled
-              className="btn bg-red-500 border-none text-white"
-              onClick={() => handleCancel(row.original._id)}
-            >
-              Cancel
-            </button>
+                className="btn bg-red-500 border-none text-white"
+                onClick={() => handleCancel(row.original._id)}
+              >
+                Cancel
+              </button>
             )}
 
-            
-            {row.original.paymentStatus === 'Unpaid' &&  row.original.confirmationStatus != 'Cancelled' && (
+
+            {row.original.paymentStatus === 'Unpaid' && row.original.confirmationStatus != 'Cancelled' && (
               <Link to={`payment/${row.original._id}`}><button
-              className="btn bg-blue-500 border-none text-white"
-              
-            >
-              Pay
-            </button></Link>
+                className="btn bg-blue-500 border-none text-white"
+
+              >
+                Pay
+              </button></Link>
             )}
 
-            
-              {row.original.paymentStatus === 'Paid' && (
+
+            {row.original.paymentStatus === 'Paid' && (
               <button
-              className="btn bg-blue-500 border-none text-white" disabled
-              
-            >
-              Paid
-            </button>
+                className="btn bg-blue-500 border-none text-white" disabled
+
+              >
+                Paid
+              </button>
             )}
           </div>
         ),
@@ -160,36 +161,41 @@ const RegisteredCamps = () => {
   } = useTable({ columns, data });
 
   return (
-    <div className="overflow-x-auto">
-    <table {...getTableProps()} className="w-full table-auto">
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()} className="border p-2" key={column.id}>
-                {column.render("Header")}
-              </th>
+    <div>
+      <Helmet>
+        <title>Care Sync | Registered Camps</title>
+      </Helmet>
+      <div className="overflow-x-auto">
+        <table {...getTableProps()} className="w-full table-auto">
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()} className="border p-2" key={column.id}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()} key={row.id}>
-              {row.cells.map(cell => (
-                <td {...cell.getCellProps()} className="border p-2" key={cell.column.id}>
-                  {cell.render("Cell")}
-                </td>
-              ))}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-);
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map(row => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} key={row.id}>
+                  {row.cells.map(cell => (
+                    <td {...cell.getCellProps()} className="border p-2" key={cell.column.id}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 

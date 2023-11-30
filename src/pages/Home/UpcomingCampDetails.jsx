@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData, useParams } from "react-router-dom";
 
 
@@ -9,6 +10,9 @@ const UpcomingCampDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Care Sync | Camp Details</title>
+            </Helmet>
             <div className="max-w-7xl p-4 mx-auto mb-20 mt-8 text-gray-950">
                 <div className="   bg-blue-300 rounded-lg  p-3">
                     <img className="w-full lg:h-[700px]" src={camp.photo} alt="" />
@@ -19,12 +23,12 @@ const UpcomingCampDetails = () => {
                     <h2 className="text-base md:text-2xl font-bold text-center mb-3">Fees: ${camp.fees}</h2>
 
                     <p className=" text-xl text-justify mb-10  font-normal"><span className=" font-bold">Description: </span>{camp.description}</p>
-                    
+
                 </div>
             </div>
 
 
-          
+
 
 
 

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const ParticipantProfile = () => {
     const { user } = useContext(AuthContext);
     const [userData, setUserData] = useState(null);
@@ -69,7 +70,11 @@ const ParticipantProfile = () => {
     };
 
     return (
-        <div className=" max-w-lg mx-auto ">
+        <div>
+            <Helmet>
+                <title>Care Sync | Profile</title>
+            </Helmet>
+            <div className=" max-w-lg mx-auto ">
             <div className="space-y-2 border-blue-600 border-2 p-3 rounded-3xl">
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Name:</span> {userData?.name}</h1>
                 <h1 className="text-xl lg:text-4xl"><span className="text-blue-600 font-medium">Email:</span> {userData?.email}</h1>
@@ -136,6 +141,7 @@ const ParticipantProfile = () => {
                     </dialog>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const ManageRegisteredCamps = () => {
   const { user } = useContext(AuthContext);
@@ -186,7 +187,11 @@ const ManageRegisteredCamps = () => {
   } = useTable({ columns, data });
 
   return (
-    <div className="overflow-x-auto">
+    <div>
+      <Helmet>
+        <title>Care Sync | Manage Registered Camp</title>
+      </Helmet>
+      <div className="overflow-x-auto">
     <table {...getTableProps()} className="w-full table-auto">
       <thead>
         {headerGroups.map(headerGroup => (
@@ -215,6 +220,7 @@ const ManageRegisteredCamps = () => {
       </tbody>
     </table>
   </div>
+    </div>
 );
 };
 

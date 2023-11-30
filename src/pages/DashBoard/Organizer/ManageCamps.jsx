@@ -3,6 +3,7 @@ import { useTable } from "react-table";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ManageCamps = () => {
   const { user } = useContext(AuthContext);
@@ -66,7 +67,7 @@ const ManageCamps = () => {
     () => [
       {
         Header: "Camp Name",
-        accessor: "name", 
+        accessor: "name",
       },
       {
         Header: "Scheduled Date and Time",
@@ -74,15 +75,15 @@ const ManageCamps = () => {
       },
       {
         Header: "Venue Location",
-        accessor: "location", 
+        accessor: "location",
       },
       {
         Header: "Specialized Services Provided",
-        accessor: "specializedServices", 
+        accessor: "specializedServices",
       },
       {
         Header: "Healthcare Professionals in Attendance",
-        accessor: "healthcareProfessionals",  
+        accessor: "healthcareProfessionals",
       },
       {
         Header: "Target Audience",
@@ -97,9 +98,9 @@ const ManageCamps = () => {
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="flex gap-1">
-          
-             <Link to={`updateCamp/${row.original._id}`}> <button className="btn bg-green-500 border-none text-white"> Update</button></Link>
-            
+
+            <Link to={`updateCamp/${row.original._id}`}> <button className="btn bg-green-500 border-none text-white"> Update</button></Link>
+
             <button
               className="btn bg-red-500 border-none text-white"
               onClick={() => handleDelete(row.original._id)}
@@ -124,36 +125,41 @@ const ManageCamps = () => {
   } = useTable({ columns, data });
 
   return (
-    <div className="overflow-x-auto">
-    <table {...getTableProps()} className="w-full table-auto">
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()} className="border p-2" key={column.id}>
-                {column.render("Header")}
-              </th>
+    <div>
+      <Helmet>
+        <title>Care Sync | Manage Camp</title>
+      </Helmet>
+      <div className="overflow-x-auto">
+        <table {...getTableProps()} className="w-full table-auto">
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()} className="border p-2" key={column.id}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()} key={row.id}>
-              {row.cells.map(cell => (
-                <td {...cell.getCellProps()} className="border p-2" key={cell.column.id}>
-                  {cell.render("Cell")}
-                </td>
-              ))}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-);
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map(row => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} key={row.id}>
+                  {row.cells.map(cell => (
+                    <td {...cell.getCellProps()} className="border p-2" key={cell.column.id}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 
