@@ -6,6 +6,15 @@ import { NavLink, Outlet } from "react-router-dom";
 import { IoAdd } from "react-icons/io5";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { FaCashRegister } from "react-icons/fa";
+import NavBar from "../pages/shared/NavBar/NavBar";
+import { CgProfile } from "react-icons/cg";
+import { FaHistory } from "react-icons/fa";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { MdManageHistory } from "react-icons/md";
+import Footer from "../pages/shared/Footer/Footer";
+
+
+
 
 
 const Dashboard = () => {
@@ -23,17 +32,22 @@ const Dashboard = () => {
 
     return (
         <div>
-
+            <NavBar></NavBar>
             <div className="flex">
                 {/* dashboard side bar */}
                 <div className="w-64 min-h-screen bg-blue-300">
                     <ul className="menu p-4">
+                    <li>
+                                    <NavLink to="/dashboard/home">
+                                        <FaHome></FaHome>
+                                         User Home</NavLink>
+                                </li>
                         {userRole === 'healthcareProfessional' &&
                             <>
                                 <li>
                                     <NavLink to="/dashboard/professional-profile">
-                                        <FaHome></FaHome>
-                                        Health Professional Home</NavLink>
+                                        <CgProfile></CgProfile>
+                                        Health Professional Profile</NavLink>
                                 </li>
 
 
@@ -48,7 +62,7 @@ const Dashboard = () => {
                             <>
                                 <li>
                                     <NavLink to="/dashboard/participant-profile">
-                                        <FaHome></FaHome>
+                                        <CgProfile></CgProfile>
                                         Participant Profile</NavLink>
                                 </li>
                                 <li>
@@ -58,7 +72,7 @@ const Dashboard = () => {
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/payment-history">
-                                        <FaCashRegister></FaCashRegister>
+                                        <FaHistory></FaHistory>
                                         Payment History</NavLink>
                                 </li>
                             </>
@@ -71,7 +85,7 @@ const Dashboard = () => {
                             <>
                                 <li>
                                     <NavLink to="/dashboard/organizer-profile">
-                                        <FaHome></FaHome>
+                                        <CgProfile></CgProfile>
                                         Organizer Profile</NavLink>
                                 </li>
                                 <li>
@@ -86,12 +100,12 @@ const Dashboard = () => {
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/manage-registered-camps">
-                                        <MdOutlineManageAccounts></MdOutlineManageAccounts>
+                                        <MdManageHistory></MdManageHistory>
                                         Manage Registered Camps</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/add-upcoming-camp">
-                                        <IoAdd></IoAdd>
+                                        <IoAddCircleOutline></IoAddCircleOutline>
                                         Add Upcoming Camp</NavLink>
                                 </li>
                             </>
@@ -115,9 +129,12 @@ const Dashboard = () => {
                 </div>
                 {/* dashboard content */}
                 <div className="flex-1 p-8">
+                    
                     <Outlet></Outlet>
+                   
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -3,13 +3,15 @@ import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { getUserRole } from "../../layout/userRole";
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+   
 
     const handleLogin = e => {
         e.preventDefault();
@@ -24,7 +26,8 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 toast.success('You have successfully logged in');
-                navigate(location?.state ? location.state : '/');
+                // navigate(location?.state ? location.state : '/');
+                navigate( '/dashboard/home');
             })
             .catch(error => {
                 console.error(error);

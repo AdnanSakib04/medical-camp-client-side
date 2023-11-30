@@ -21,6 +21,7 @@ import UpcomingCampDetails from "../pages/Home/UpcomingCampDetails";
 import ManageRegisteredCamps from "../pages/DashBoard/Organizer/ManageRegisteredCamps";
 import Payment from "../pages/DashBoard/Participant/Payment";
 import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory";
+import DashboardHome from "../pages/DashBoard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: "payment-history",
         element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+      },
+      {
+        path: "home",
+        element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
       }
 
 
