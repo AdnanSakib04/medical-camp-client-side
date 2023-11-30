@@ -26,6 +26,8 @@ import JoinCamp from "../pages/AvailableCamps/JoinCamp";
 import ProfessionalList from "../pages/DashBoard/Admin/ProfessionalList";
 import OrganizerList from "../pages/DashBoard/Admin/OrganizerList";
 import ParticipantList from "../pages/DashBoard/Admin/ParticipantList";
+import FeedbackRatings from "../pages/DashBoard/Participant/FeedbackRatings";
+import FeedbackForm from "../pages/DashBoard/Participant/FeedbackForm";
 
 const router = createBrowserRouter([
   {
@@ -138,6 +140,15 @@ const router = createBrowserRouter([
       {
         path: "participant-list",
         element: <PrivateRoute><ParticipantList></ParticipantList></PrivateRoute>
+      },
+      {
+        path: "feedback-and-ratings",
+        element: <PrivateRoute><FeedbackRatings></FeedbackRatings></PrivateRoute>
+      },
+      {
+        path: "feedback-and-ratings/feedback/:regId",
+        element: <PrivateRoute><FeedbackForm></FeedbackForm></PrivateRoute>,
+        loader: () => fetch(`http://localhost:5000/registered-camps`)
       },
 
 

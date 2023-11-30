@@ -13,6 +13,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { MdManageHistory } from "react-icons/md";
 import Footer from "../pages/shared/Footer/Footer";
 import { FaListUl } from "react-icons/fa6";
+import { MdFeedback } from "react-icons/md";
 
 
 
@@ -99,6 +100,11 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/payment-history">
                                         <FaHistory></FaHistory>
                                         Payment History</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/feedback-and-ratings">
+                                        <MdFeedback></MdFeedback>
+                                        Feedback and Ratings</NavLink>
                                 </li>
                             </>
                         }
