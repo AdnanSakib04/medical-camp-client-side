@@ -65,7 +65,7 @@ const NavBar = () => {
                             </FaBriefcaseMedical>
                         </div>
                         <div className="text-center font-medium text-xl ">
-                            <h1>Care Sync</h1>
+                           <Link to={'/'}> <h1>Care Sync</h1></Link>
                             {/* <h1>Blogs</h1> */}
                         </div>
                     </div>
