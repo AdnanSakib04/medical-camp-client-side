@@ -6,12 +6,24 @@ import { FaAnglesRight } from "react-icons/fa6";
 
 
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { getUserRole } from "../../layout/userRole";
 const CampCard = ({ singleCamp }) => {
     const { name, photo, audience, description, location, _id, fees, specializedServices, dateTime, healthcareProfessionals } = singleCamp;
     console.log(_id);
 
     const { user } = useContext(AuthContext);
+    const [userRole, setUserRole] = useState(null);
+
+    
+    useEffect(() => {
+        // Fetch user role when the component mounts
+        if (user) {
+            getUserRole(user.email)
+                .then((role) => setUserRole(role))
+                .catch((error) => console.error('Error fetching user role:', error));
+        }
+    }, [user]);
 
 
    
@@ -37,7 +49,12 @@ const CampCard = ({ singleCamp }) => {
 
                 
                    
-                    <Link to={`/join-camp/${_id}`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button></Link>
+                   {
+                    userRole === 'participant' &&  <Link to={`/join-camp/${_id}`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button></Link>
+                   }
+                   {
+                    userRole != 'participant' &&  <button disabled className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button>
+                   }
                   
             </div>
         </div>

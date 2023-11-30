@@ -122,7 +122,7 @@ const UpdateCamp = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-medium text-[18px]">Camp Fees</span>
+                <span className="label-text font-medium text-[18px]">Camp Fees $</span>
               </label>
               <input
                 type="number"
