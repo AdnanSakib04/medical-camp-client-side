@@ -79,15 +79,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'professional-profile',
-        element: <HealthProfessionalHome></HealthProfessionalHome>
+        element: <PrivateRoute><HealthProfessionalHome></HealthProfessionalHome></PrivateRoute>
       },
       {
         path: 'participant-profile',
-        element: <ParticipantProfile></ParticipantProfile>
+        element: <PrivateRoute><ParticipantProfile></ParticipantProfile></PrivateRoute>
       },
       {
         path: 'organizer-profile',
-        element: <OrganizerProfile></OrganizerProfile>
+        element: <PrivateRoute><OrganizerProfile></OrganizerProfile></PrivateRoute>
       },
       {
         path: "add-a-camp",
