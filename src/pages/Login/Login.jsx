@@ -1,11 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
-import { getUserRole } from "../../layout/userRole";
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext);

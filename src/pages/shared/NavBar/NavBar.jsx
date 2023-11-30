@@ -99,12 +99,14 @@ const NavBar = () => {
                             
                             :
                             <>
-                                <Link to="/register">
-                                    <button className="btn bg-blue-600 text-white w-[90px]">Register</button>
+                               <div className=" flex gap-1">
+                               <Link to="/register">
+                                    <button className="btn bg-blue-600 text-white w-[90px] border-none">Register</button>
                                 </Link>
                                 <Link to="/login">
-                                    <button className="btn bg-blue-600 text-white w-[90px]">Login</button>
+                                    <button className="btn bg-blue-600 text-white w-[90px] border-none">Login</button>
                                 </Link>
+                               </div>
                             </>
                     }
 

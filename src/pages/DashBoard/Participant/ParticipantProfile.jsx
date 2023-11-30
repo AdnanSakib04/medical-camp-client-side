@@ -97,7 +97,7 @@ const ParticipantProfile = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-[18px]">Name</span>
                                     </label>
-                                    <input type="text" defaultValue={userData?.name} name="name" placeholder="Name" className="input input-bordered" required />
+                                    <input type="text" readOnly defaultValue={userData?.name} name="name" placeholder="Name" className="input input-bordered" required />
                                 </div>
 
                                 <div className="form-control">

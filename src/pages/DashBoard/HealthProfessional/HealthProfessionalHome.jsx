@@ -98,7 +98,7 @@ const HealthProfessionalHome = () => {
                   <label className="label">
                     <span className="label-text font-medium text-[18px]">Name</span>
                   </label>
-                  <input type="text" defaultValue={userData?.name} name="name" placeholder="Name" className="input input-bordered" required />
+                  <input readOnly type="text" defaultValue={userData?.name} name="name" placeholder="Name" className="input input-bordered" required />
                 </div>
 
                 <div className="form-control">
