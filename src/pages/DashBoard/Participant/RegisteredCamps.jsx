@@ -3,10 +3,12 @@ import { useTable } from "react-table";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const RegisteredCamps = () => {
   const { user } = useContext(AuthContext);
   const [campData, setCampData] = useState(null);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     fetch(`http://localhost:5000/registered-camps/${user.email}`)
@@ -20,43 +22,51 @@ const RegisteredCamps = () => {
   }, [user.email]);
 
   const handleCancel = useCallback(
-    _id => {
-      Swal.fire({
+    async (_id) => {
+      const confirmation = await Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, remove it!'
-      }).then(result => {
-        if (result.isConfirmed) {
-          fetch(`http://localhost:5000/registered-camps/${_id}`, {
-            method: 'DELETE'
-          })
-            .then(res => res.json())
-            .then(data => {
-              console.log(data);
-              if (data.deletedCount > 0) {
-                Swal.fire(
-                  'Removed!',
-                  'Camp has been removed.',
-                  'success'
-                );
-                const remainingCamps = campData.filter(camp => camp._id !== _id);
-                setCampData(remainingCamps);
-              }
-            })
-            .catch(error => {
-              console.error('Error deleting camp:', error);
-              Swal.fire(
-                'Error!',
-                'An error occurred while removing the camp.',
-                'error'
-              );
-            });
-        }
+        confirmButtonText: 'Yes, cancel it!'
       });
+  
+      if (confirmation.isConfirmed) {
+        try {
+          const updateStatus = {
+            confirmationStatus: 'Cancelled',
+          };
+          
+          // Update the confirmation status on the payment history
+          const res2 = await axiosPublic.patch(`/payment-history-status/${_id}`, updateStatus);
+          console.log('Confirmation status updated on payment history:', res2.data.message);
+          
+          // Update the confirmation status
+          const res = await axiosPublic.patch(`/registered-camp-organizer/${_id}`, updateStatus);
+          console.log('Confirmation status updated:', res.data.message);
+  
+          // Assuming campData is a state you use to render your table
+          const updatedCamps = campData.map((camp) =>
+            camp._id === _id ? { ...camp, confirmationStatus: 'Cancelled' } : camp
+          );
+          setCampData(updatedCamps);
+  
+          Swal.fire({
+            title: 'Cancelled!',
+            text: 'Registration Cancelled.',
+            icon: 'success'
+          });
+        } catch (error) {
+          console.error('Error updating confirmation status:', error);
+          Swal.fire({
+            title: 'Error!',
+            text: 'An error occurred while updating confirmation status.',
+            icon: 'error'
+          });
+        }
+      }
     },
     [campData]
   );
@@ -95,16 +105,26 @@ const RegisteredCamps = () => {
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="flex gap-1">
-            <Link to={`updateCamp/${row.original._id}`}>
-              <button className="btn bg-green-500 border-none text-white">Update</button>
-            </Link>
-            <button
+            
+            {row.original.paymentStatus === 'Unpaid' && row.original.confirmationStatus != 'Cancelled' &&(
+              <button
               className="btn bg-red-500 border-none text-white"
               onClick={() => handleCancel(row.original._id)}
             >
               Cancel
             </button>
-            {row.original.paymentStatus === 'Unpaid' && (
+            )}
+            {row.original.paymentStatus === 'Paid' && (
+              <button disabled
+              className="btn bg-red-500 border-none text-white"
+              onClick={() => handleCancel(row.original._id)}
+            >
+              Cancel
+            </button>
+            )}
+
+            
+            {row.original.paymentStatus === 'Unpaid' &&  row.original.confirmationStatus != 'Cancelled' && (
               <Link to={`payment/${row.original._id}`}><button
               className="btn bg-blue-500 border-none text-white"
               
@@ -112,6 +132,8 @@ const RegisteredCamps = () => {
               Pay
             </button></Link>
             )}
+
+            
               {row.original.paymentStatus === 'Paid' && (
               <button
               className="btn bg-blue-500 border-none text-white" disabled

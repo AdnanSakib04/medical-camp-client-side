@@ -83,6 +83,7 @@ const CheckoutForm = ({ camp }) => {
                 // now save the payment in the database
                 const payment = {
                     campName: camp?.campName,
+                    campId: camp?._id,
                     dateTime: camp?.dateTime,
                     location: camp?.location,
                     fees: camp?.fees,
@@ -92,9 +93,8 @@ const CheckoutForm = ({ camp }) => {
                     paymentStatus: "Paid",
                     confirmationStatus: "Pending",
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
-                    // cartIds: cart.map(item => item._id),
-                    // menuItemIds: cart.map(item => item.menuId),
+                    date: new Date(), 
+
                     status: 'Pending'
                 }
 
@@ -104,20 +104,21 @@ const CheckoutForm = ({ camp }) => {
                 const updateStatus = {
                     paymentStatus: 'Paid',        
                   };
-                const res2 = await axiosPublic.patch(`/payments/${user.email}`, updateStatus);
-                console.log('Payment status updated:', res2.data.message);
+                  console.log('Update Status:', updateStatus);
+                  const res2 = await axiosPublic.patch(`/registered-camp/${camp._id}`, updateStatus);
+                  console.log('Payment status updated:', res2.data.message);
+                  
 
 
-                // refetch();
-                if (res.data?.paymentResult?.insertedId) {
+                if (res.data?.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: "Thank you for the payment",
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/dashboard/paymentHistory')
+                    navigate('/dashboard/payment-history')
                 }
 
             }
