@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PopularCamps = () => {
     const [campData, setCampData] = useState(null);
     useEffect(() => {
-        fetch(`http://localhost:5000/available-camps`)
+        fetch(`https://medical-camp-server-side.vercel.app/available-camps`)
             .then(response => response.json())
             .then(data => {
                 setCampData(data);

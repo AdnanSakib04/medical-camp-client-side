@@ -8,7 +8,7 @@ const HealthProfessionalHome = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/get-healthcareProfessional-data?email=${user.email}`)
+    fetch(`https://medical-camp-server-side.vercel.app/get-healthcareProfessional-data?email=${user.email}`)
       .then(response => response.json())
       .then(data => {
         setUserData(data);
@@ -33,7 +33,7 @@ const HealthProfessionalHome = () => {
 
     console.log(updatedProfile);
 
-    fetch(`http://localhost:5000/update-healthcare-profile/${email}`, {
+    fetch(`https://medical-camp-server-side.vercel.app/update-healthcare-profile/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

@@ -10,7 +10,7 @@ const ManageCamps = () => {
   const [campData, setCampData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/available-camps/${user.email}`)
+    fetch(`https://medical-camp-server-side.vercel.app/available-camps/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);
@@ -32,7 +32,7 @@ const ManageCamps = () => {
         confirmButtonText: 'Yes, remove it!'
       }).then(result => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/delete-camp/${_id}`, {
+          fetch(`https://medical-camp-server-side.vercel.app/delete-camp/${_id}`, {
             method: 'DELETE'
           })
             .then(res => res.json())

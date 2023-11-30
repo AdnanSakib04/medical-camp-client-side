@@ -12,7 +12,7 @@ const RegisteredCamps = () => {
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/registered-camps/${user.email}`)
+    fetch(`https://medical-camp-server-side.vercel.app/registered-camps/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);

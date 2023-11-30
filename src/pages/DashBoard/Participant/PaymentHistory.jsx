@@ -10,7 +10,7 @@ const PaymentHistory = () => {
   const [campData, setCampData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/payments/${user.email}`)
+    fetch(`https://medical-camp-server-side.vercel.app/payments/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setCampData(data);

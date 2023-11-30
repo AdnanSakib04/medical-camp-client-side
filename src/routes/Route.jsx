@@ -56,22 +56,22 @@ const router = createBrowserRouter([
       {
         path: "/available-camps",
         element: <PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/available-camps')
+        loader: () => fetch('https://medical-camp-server-side.vercel.app/available-camps')
       },
       {
         path: "/camp-details/:campId",
         element: <PrivateRoute><CampDetails></CampDetails></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/available-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/available-camps`)
       },
       {
         path: "/join-camp/:campId",
         element: <PrivateRoute><JoinCamp></JoinCamp></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/available-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/available-camps`)
       },
       {
         path: "/upcoming-camp-details/:campId",
         element: <PrivateRoute><UpcomingCampDetails></UpcomingCampDetails></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/upcoming-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/upcoming-camps`)
       }
     ],
   },
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
       {
         path: "manage-camps/updateCamp/:campId",
         element: <PrivateRoute><UpdateCamp></UpdateCamp></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/available-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/available-camps`)
       },
       {
         path: "registered-camps",
@@ -119,7 +119,7 @@ const router = createBrowserRouter([
       {
         path: "registered-camps/payment/:id",
         element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/registered-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/registered-camps`)
       },
       {
         path: "payment-history",
@@ -148,7 +148,7 @@ const router = createBrowserRouter([
       {
         path: "feedback-and-ratings/feedback/:regId",
         element: <PrivateRoute><FeedbackForm></FeedbackForm></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/registered-camps`)
+        loader: () => fetch(`https://medical-camp-server-side.vercel.app/registered-camps`)
       },
 
 

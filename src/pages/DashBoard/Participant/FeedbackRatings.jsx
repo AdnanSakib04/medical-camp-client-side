@@ -12,7 +12,7 @@ const FeedbackRatings = () => {
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/registered-camps/${user.email}`)
+    fetch(`https://medical-camp-server-side.vercel.app/registered-camps/${user.email}`)
       .then(response => response.json())
       .then(data => {
         console.log('All camp data:', data);
@@ -133,7 +133,7 @@ const FeedbackRatings = () => {
   return (
     <div>
       <Helmet>
-        <title>Care Sync | Registered Camps</title>
+        <title>Care Sync | Feedback and Ratings</title>
       </Helmet>
       <div className="overflow-x-auto">
         <table {...getTableProps()} className="w-full table-auto">

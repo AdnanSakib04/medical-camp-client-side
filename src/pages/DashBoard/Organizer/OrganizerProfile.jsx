@@ -7,7 +7,7 @@ const OrganizerProfile = () => {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/get-organizer-data?email=${user.email}`)
+        fetch(`https://medical-camp-server-side.vercel.app/get-organizer-data?email=${user.email}`)
             .then(response => response.json())
             .then(data => {
                 setUserData(data);
@@ -32,7 +32,7 @@ const OrganizerProfile = () => {
 
         console.log(updatedProfile);
 
-        fetch(`http://localhost:5000/update-organizer-profile/${email}`, {
+        fetch(`https://medical-camp-server-side.vercel.app/update-organizer-profile/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

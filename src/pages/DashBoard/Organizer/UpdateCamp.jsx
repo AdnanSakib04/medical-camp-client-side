@@ -46,7 +46,7 @@ const UpdateCamp = () => {
       console.log(campData);
 
 
-      fetch(`http://localhost:5000/update-camp/${campId}`, {
+      fetch(`https://medical-camp-server-side.vercel.app/update-camp/${campId}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'

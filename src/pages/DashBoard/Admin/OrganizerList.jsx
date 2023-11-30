@@ -7,7 +7,7 @@ const OrganizerList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/user-list`);
+        const response = await fetch(`https://medical-camp-server-side.vercel.app/user-list`);
         const data = await response.json();
         setUserData(data);
       } catch (error) {

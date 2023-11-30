@@ -10,7 +10,7 @@ const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
   
     useEffect(() => {
-      fetch('http://localhost:5000/feedback-and-ratings')
+      fetch('https://medical-camp-server-side.vercel.app/feedback-and-ratings')
         .then(res => res.json())
         .then(data => setReviews(data))
     }, []);
