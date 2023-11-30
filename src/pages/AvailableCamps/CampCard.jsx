@@ -35,13 +35,10 @@ const CampCard = ({ singleCamp }) => {
                 <Link to={`/camp-details/${_id}`}><button className="btn bg-blue-600 text-white font-bold rounded-lg  border-none"><BiDetail></BiDetail>Details</button></Link>
                
 
-                {/* check to see if user is logged in or not */}
-                {
-                    user? 
-                    <button  className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button>
-                    :
-                    <Link to={`/login`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button></Link>
-                   }
+                
+                   
+                    <Link to={`/join-camp/${_id}`}><button className="btn font-bold text-black   bg-orange-300  rounded-lg border-none"><FaAnglesRight></FaAnglesRight>Join Camp</button></Link>
+                  
             </div>
         </div>
     </motion.div>

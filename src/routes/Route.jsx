@@ -22,6 +22,7 @@ import ManageRegisteredCamps from "../pages/DashBoard/Organizer/ManageRegistered
 import Payment from "../pages/DashBoard/Participant/Payment";
 import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory";
 import DashboardHome from "../pages/DashBoard/DashboardHome";
+import JoinCamp from "../pages/AvailableCamps/JoinCamp";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
       {
         path: "/camp-details/:campId",
         element: <PrivateRoute><CampDetails></CampDetails></PrivateRoute>,
+        loader: () => fetch(`http://localhost:5000/available-camps`)
+      },
+      {
+        path: "/join-camp/:campId",
+        element: <PrivateRoute><JoinCamp></JoinCamp></PrivateRoute>,
         loader: () => fetch(`http://localhost:5000/available-camps`)
       },
       {
