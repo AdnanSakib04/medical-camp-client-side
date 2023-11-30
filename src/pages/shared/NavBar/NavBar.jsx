@@ -43,6 +43,8 @@ const NavBar = () => {
             isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard/professional-profile">Dashboard</NavLink></li>}
         {userRole==="organizer" && <li><NavLink className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard/organizer-profile">Dashboard</NavLink></li>}
+        {userRole==="admin" && <li><NavLink className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? " font-bold  text-blue-950 lg:text-blue-600 p-2 rounded-lg" : ""} to="/dashboard/home">Dashboard</NavLink></li>}
 
     </>
     return (

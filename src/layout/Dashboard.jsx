@@ -12,6 +12,7 @@ import { FaHistory } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdManageHistory } from "react-icons/md";
 import Footer from "../pages/shared/Footer/Footer";
+import { FaListUl } from "react-icons/fa6";
 
 
 
@@ -42,6 +43,30 @@ const Dashboard = () => {
                                         <FaHome></FaHome>
                                          User Home</NavLink>
                                 </li>
+
+                                {userRole === 'admin' &&
+                            <>
+                                <li>
+                                    <NavLink to="/dashboard/participant-list">
+                                        <FaListUl></FaListUl>
+                                        Participant List</NavLink>
+                                </li>
+                                
+                                <li>
+                                    <NavLink to="/dashboard/organizer-list">
+                                        <FaListUl></FaListUl>
+                                        Organizer List</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/professional-list">
+                                        <FaListUl></FaListUl>
+                                        Healthcare Professional List</NavLink>
+                                </li>
+
+
+                            </>
+
+                        }
                         {userRole === 'healthcareProfessional' &&
                             <>
                                 <li>

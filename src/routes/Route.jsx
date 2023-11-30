@@ -23,6 +23,9 @@ import Payment from "../pages/DashBoard/Participant/Payment";
 import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory";
 import DashboardHome from "../pages/DashBoard/DashboardHome";
 import JoinCamp from "../pages/AvailableCamps/JoinCamp";
+import ProfessionalList from "../pages/DashBoard/Admin/ProfessionalList";
+import OrganizerList from "../pages/DashBoard/Admin/OrganizerList";
+import ParticipantList from "../pages/DashBoard/Admin/ParticipantList";
 
 const router = createBrowserRouter([
   {
@@ -123,7 +126,19 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
-      }
+      },
+      {
+        path: "professional-list",
+        element: <PrivateRoute><ProfessionalList></ProfessionalList></PrivateRoute>
+      },
+      {
+        path: "organizer-list",
+        element: <PrivateRoute><OrganizerList></OrganizerList></PrivateRoute>
+      },
+      {
+        path: "participant-list",
+        element: <PrivateRoute><ParticipantList></ParticipantList></PrivateRoute>
+      },
 
 
     ]
