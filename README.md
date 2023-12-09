@@ -4,6 +4,11 @@
 live Link: [https://medical-camp-3abc1.web.app/](https://medical-camp-3abc1.web.app/)
 
 
+**Technologies Used:** React, MongoDB, DaisyUI, Firebase, Tailwind CSS, Stripe
+
+
+
+
 Admin Email: admin@gmail.com
 
 
